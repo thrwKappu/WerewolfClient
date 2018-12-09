@@ -18,6 +18,12 @@ namespace WerewolfClient
         {
             InitializeComponent();
             _mainForm = MainForm;
+
+            Timer _scenedelay = new Timer();
+            _scenedelay.Interval = 1000;
+            _scenedelay.Tick += (sender, e) => TitleEvent(sender, e, _scenedelay);
+            _scenedelay.Start();
+            _scenedelay.Enabled = true;
         }
 
         public void Notify(Model m)
@@ -71,6 +77,39 @@ namespace WerewolfClient
             wcmd.Action = WerewolfCommand.CommandEnum.SignUp;
             wcmd.Payloads = new Dictionary<string, string>() { { "Login", TbLogin.Text}, { "Password",TbPassword.Text}, { "Server", TBServer.Text } };
             controller.ActionPerformed(wcmd);
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TBServer_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TitleEvent(object sender, EventArgs e, Timer _timer)
+        {
+            if (this.pictureBox3.Visible == true)
+            {
+                this.pictureBox3.Visible = false;
+                this.pictureBox2.Visible = true;
+            }
+            else if (this.pictureBox2.Visible == true)
+            {
+                this.pictureBox2.Visible = false;
+                //this.pictureBox1.Visible = true;
+                _timer.Stop();
+                _timer.Enabled = false;
+                _timer.Dispose();
+            }
+                
         }
     }
 }

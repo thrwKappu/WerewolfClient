@@ -26,9 +26,12 @@ namespace WerewolfClient
         private string _myRole;
         private bool _isDead;
         private List<Player> players = null;
+        private System.Drawing.Image _dayBG;
         public MainForm()
         {
             InitializeComponent();
+
+            _dayBG = this.GBPlayers.BackgroundImage;
 
             foreach (int i in Enumerable.Range(0, 16))
             {
@@ -215,11 +218,13 @@ namespace WerewolfClient
                         AddChatMessage( "Switch to day time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = Game.PeriodEnum.Day;
                         LBPeriod.Text = "Day time of";
+                        this.GBPlayers.BackgroundImage = _dayBG;
                         break;
                     case EventEnum.SwitchToNightTime:
                         AddChatMessage( "Switch to night time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = Game.PeriodEnum.Night;
                         LBPeriod.Text = "Night time of";
+                        this.GBPlayers.BackgroundImage = this.groupBox1.BackgroundImage;
                         break;
                     case EventEnum.UpdateDay:
                         // TODO  catch parse exception here
@@ -360,6 +365,16 @@ namespace WerewolfClient
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void TbChatBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GBPlayers_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
