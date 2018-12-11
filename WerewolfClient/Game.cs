@@ -14,11 +14,11 @@ using Role = WerewolfAPI.Model.Role;
 
 namespace WerewolfClient
 {
-    public partial class MainForm : Form, View
+    public partial class Game : Form, View
     {
         private Timer _updateTimer;
         private WerewolfController controller;
-        private Game.PeriodEnum _currentPeriod;
+        private WerewolfAPI.Model.Game.PeriodEnum _currentPeriod;
         private int _currentDay;
         private int _currentTime;
         private bool _voteActivated;
@@ -26,7 +26,9 @@ namespace WerewolfClient
         private string _myRole;
         private bool _isDead;
         private List<Player> players = null;
-        public MainForm()
+        private Form _mainMenu;
+
+        public Game()
         {
             InitializeComponent();
 
@@ -44,6 +46,11 @@ namespace WerewolfClient
             EnableButton(BtnVote, false);
             _myRole = null;
             _isDead = false;
+        }
+        
+        public void SetMainMenu(Form _f)
+        {
+            _mainMenu = _f;
         }
 
         private void OnTimerEvent(object sender, EventArgs e)
@@ -143,23 +150,9 @@ namespace WerewolfClient
         {
             if (m is WerewolfModel)
             {
-                WerewolfModel wm = (WerewolfModel)m;
+                var wm = (WerewolfModel)m;
                 switch (wm.Event)
                 {
-                    case EventEnum.JoinGame:
-                        if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
-                        {
-                            BtnJoin.Visible = false;
-                            AddChatMessage("You're joing the game #" + wm.EventPayloads["Game.Id"] + ", please wait for game start.");
-                            _updateTimer.Interval = 1000;
-                            _updateTimer.Tick += new EventHandler(OnTimerEvent);
-                            _updateTimer.Enabled = true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("You can't join the game, please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        break;
                     case EventEnum.GameStopped:
                         AddChatMessage("Game is finished, outcome is " + wm.EventPayloads["Game.Outcome"]);
                         _updateTimer.Enabled = false;
@@ -168,7 +161,7 @@ namespace WerewolfClient
                         players = wm.Players;
                         _myRole = wm.EventPayloads["Player.Role.Name"];
                         AddChatMessage("Your role is " + _myRole + ".");
-                        _currentPeriod = Game.PeriodEnum.Night;
+                        _currentPeriod = WerewolfAPI.Model.Game.PeriodEnum.Night;
                         EnableButton(BtnAction, true);
                         switch (_myRole)
                         {
@@ -213,12 +206,12 @@ namespace WerewolfClient
                         break;
                     case EventEnum.SwitchToDayTime:
                         AddChatMessage("Switch to day time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
-                        _currentPeriod = Game.PeriodEnum.Day;
+                        _currentPeriod = WerewolfAPI.Model.Game.PeriodEnum.Day;
                         LBPeriod.Text = "Day time of";
                         break;
                     case EventEnum.SwitchToNightTime:
                         AddChatMessage("Switch to night time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
-                        _currentPeriod = Game.PeriodEnum.Night;
+                        _currentPeriod = WerewolfAPI.Model.Game.PeriodEnum.Night;
                         LBPeriod.Text = "Night time of";
                         break;
                     case EventEnum.UpdateDay:
@@ -306,9 +299,7 @@ namespace WerewolfClient
 
         private void BtnJoin_Click(object sender, EventArgs e)
         {
-            WerewolfCommand wcmd = new WerewolfCommand();
-            wcmd.Action = CommandEnum.JoinGame;
-            controller.ActionPerformed(wcmd);
+            
         }
 
         private void BtnVote_Click(object sender, EventArgs e)
@@ -383,11 +374,6 @@ namespace WerewolfClient
             }
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
         private void TbChatInput_Enter(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Return && TbChatInput.Text != "")
@@ -398,6 +384,12 @@ namespace WerewolfClient
                 TbChatInput.Text = "";
                 controller.ActionPerformed(wcmd);
             }
+        }
+
+        private void OnGameExit(object sender, FormClosingEventArgs e)
+        {
+            MessageBox.Show("Exit?");
+            Environment.Exit(0);
         }
     }
 }

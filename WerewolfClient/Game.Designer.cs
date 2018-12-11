@@ -1,6 +1,6 @@
 ﻿namespace WerewolfClient
 {
-    partial class MainForm
+    partial class Game
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.GBPlayers = new System.Windows.Forms.GroupBox();
             this.BtnPlayer15 = new System.Windows.Forms.Button();
             this.BtnPlayer14 = new System.Windows.Forms.Button();
@@ -50,9 +50,9 @@
             this.TbChatInput = new System.Windows.Forms.TextBox();
             this.TbChatBox = new System.Windows.Forms.TextBox();
             this.GBAction = new System.Windows.Forms.GroupBox();
-            this.BtnJoin = new System.Windows.Forms.Button();
             this.BtnAction = new System.Windows.Forms.Button();
             this.BtnVote = new System.Windows.Forms.Button();
+            this.BtnJoin = new System.Windows.Forms.Button();
             this.GBStatus = new System.Windows.Forms.GroupBox();
             this.LBTime = new System.Windows.Forms.Label();
             this.LBDay = new System.Windows.Forms.Label();
@@ -330,25 +330,14 @@
             // 
             // GBAction
             // 
-            this.GBAction.Controls.Add(this.BtnJoin);
             this.GBAction.Controls.Add(this.BtnAction);
             this.GBAction.Controls.Add(this.BtnVote);
             this.GBAction.Location = new System.Drawing.Point(12, 406);
             this.GBAction.Name = "GBAction";
-            this.GBAction.Size = new System.Drawing.Size(267, 82);
+            this.GBAction.Size = new System.Drawing.Size(192, 82);
             this.GBAction.TabIndex = 3;
             this.GBAction.TabStop = false;
             this.GBAction.Text = "Action";
-            // 
-            // BtnJoin
-            // 
-            this.BtnJoin.Location = new System.Drawing.Point(180, 19);
-            this.BtnJoin.Name = "BtnJoin";
-            this.BtnJoin.Size = new System.Drawing.Size(75, 46);
-            this.BtnJoin.TabIndex = 9;
-            this.BtnJoin.Text = "Join Game";
-            this.BtnJoin.UseVisualStyleBackColor = true;
-            this.BtnJoin.Click += new System.EventHandler(this.BtnJoin_Click);
             // 
             // BtnAction
             // 
@@ -370,6 +359,16 @@
             this.BtnVote.UseVisualStyleBackColor = true;
             this.BtnVote.Click += new System.EventHandler(this.BtnVote_Click);
             // 
+            // BtnJoin
+            // 
+            this.BtnJoin.Location = new System.Drawing.Point(330, 425);
+            this.BtnJoin.Name = "BtnJoin";
+            this.BtnJoin.Size = new System.Drawing.Size(75, 46);
+            this.BtnJoin.TabIndex = 9;
+            this.BtnJoin.Text = "Quit";
+            this.BtnJoin.UseVisualStyleBackColor = true;
+            this.BtnJoin.Click += new System.EventHandler(this.BtnJoin_Click);
+            // 
             // GBStatus
             // 
             this.GBStatus.Controls.Add(this.LBTime);
@@ -377,7 +376,7 @@
             this.GBStatus.Controls.Add(this.LBPeriod);
             this.GBStatus.Controls.Add(this.label2);
             this.GBStatus.Controls.Add(this.label1);
-            this.GBStatus.Location = new System.Drawing.Point(285, 406);
+            this.GBStatus.Location = new System.Drawing.Point(210, 406);
             this.GBStatus.Name = "GBStatus";
             this.GBStatus.Size = new System.Drawing.Size(114, 82);
             this.GBStatus.TabIndex = 8;
@@ -387,7 +386,7 @@
             // LBTime
             // 
             this.LBTime.AutoSize = true;
-            this.LBTime.Location = new System.Drawing.Point(40, 52);
+            this.LBTime.Location = new System.Drawing.Point(49, 52);
             this.LBTime.Name = "LBTime";
             this.LBTime.Size = new System.Drawing.Size(13, 13);
             this.LBTime.TabIndex = 12;
@@ -396,7 +395,7 @@
             // LBDay
             // 
             this.LBDay.AutoSize = true;
-            this.LBDay.Location = new System.Drawing.Point(40, 35);
+            this.LBDay.Location = new System.Drawing.Point(49, 36);
             this.LBDay.Name = "LBDay";
             this.LBDay.Size = new System.Drawing.Size(13, 13);
             this.LBDay.TabIndex = 11;
@@ -429,18 +428,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Day #";
             // 
-            // MainForm
+            // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 508);
+            this.Controls.Add(this.BtnJoin);
             this.Controls.Add(this.GBStatus);
             this.Controls.Add(this.GBAction);
             this.Controls.Add(this.GBChat);
             this.Controls.Add(this.GBPlayers);
-            this.Name = "MainForm";
+            this.MinimizeBox = false;
+            this.Name = "Game";
             this.Text = "Werewolf Client";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnGameExit);
             this.GBPlayers.ResumeLayout(false);
             this.GBChat.ResumeLayout(false);
             this.GBChat.PerformLayout();
