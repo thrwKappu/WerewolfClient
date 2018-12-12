@@ -39,13 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cbServerlist = new System.Windows.Forms.ComboBox();
             this.btnExit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -54,7 +48,7 @@
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(139, 158);
+            this.label1.Location = new System.Drawing.Point(56, 157);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 24);
             this.label1.TabIndex = 0;
@@ -66,7 +60,7 @@
             this.label2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Maroon;
-            this.label2.Location = new System.Drawing.Point(104, 200);
+            this.label2.Location = new System.Drawing.Point(21, 199);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 24);
             this.label2.TabIndex = 1;
@@ -76,7 +70,7 @@
             // 
             this.TbLogin.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.TbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbLogin.Location = new System.Drawing.Point(202, 155);
+            this.TbLogin.Location = new System.Drawing.Point(119, 154);
             this.TbLogin.Name = "TbLogin";
             this.TbLogin.Size = new System.Drawing.Size(306, 29);
             this.TbLogin.TabIndex = 2;
@@ -85,7 +79,7 @@
             // 
             this.TbPassword.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.TbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbPassword.Location = new System.Drawing.Point(202, 197);
+            this.TbPassword.Location = new System.Drawing.Point(119, 196);
             this.TbPassword.Name = "TbPassword";
             this.TbPassword.PasswordChar = '*';
             this.TbPassword.Size = new System.Drawing.Size(306, 29);
@@ -95,10 +89,10 @@
             // 
             this.BtnSignIn.BackColor = System.Drawing.Color.DimGray;
             this.BtnSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSignIn.Location = new System.Drawing.Point(163, 245);
             this.BtnSignIn.ForeColor = System.Drawing.Color.Maroon;
+            this.BtnSignIn.Location = new System.Drawing.Point(186, 248);
             this.BtnSignIn.Name = "BtnSignIn";
-            this.BtnSignIn.Size = new System.Drawing.Size(81, 47);
+            this.BtnSignIn.Size = new System.Drawing.Size(96, 47);
             this.BtnSignIn.TabIndex = 4;
             this.BtnSignIn.Text = "Sign In";
             this.BtnSignIn.UseVisualStyleBackColor = false;
@@ -109,7 +103,7 @@
             this.BtnSignUp.BackColor = System.Drawing.Color.DimGray;
             this.BtnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSignUp.ForeColor = System.Drawing.Color.Maroon;
-            this.BtnSignUp.Location = new System.Drawing.Point(47, 245);
+            this.BtnSignUp.Location = new System.Drawing.Point(25, 248);
             this.BtnSignUp.Name = "BtnSignUp";
             this.BtnSignUp.Size = new System.Drawing.Size(96, 47);
             this.BtnSignUp.TabIndex = 5;
@@ -120,7 +114,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(216, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(133, 11);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(203, 73);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -133,7 +127,7 @@
             this.label3.BackColor = System.Drawing.Color.Black;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Maroon;
-            this.label3.Location = new System.Drawing.Point(61, 123);
+            this.label3.Location = new System.Drawing.Point(48, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 24);
             this.label3.TabIndex = 7;
@@ -143,21 +137,22 @@
             // 
             this.cbServerlist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbServerlist.FormattingEnabled = true;
-            this.cbServerlist.Location = new System.Drawing.Point(132, 123);
+            this.cbServerlist.Location = new System.Drawing.Point(119, 122);
             this.cbServerlist.Name = "cbServerlist";
-            this.cbServerlist.Size = new System.Drawing.Size(273, 21);
+            this.cbServerlist.Size = new System.Drawing.Size(306, 21);
             this.cbServerlist.TabIndex = 8;
-            this.TBServer.TextChanged += new System.EventHandler(this.TBServer_TextChanged);
             // 
             // btnExit
             // 
+            this.btnExit.BackColor = System.Drawing.Color.DimGray;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(280, 245);
+            this.btnExit.ForeColor = System.Drawing.Color.Maroon;
+            this.btnExit.Location = new System.Drawing.Point(329, 248);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(94, 45);
+            this.btnExit.Size = new System.Drawing.Size(96, 47);
             this.btnExit.TabIndex = 9;
             this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             this.btnExit.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnExit_OnClicked);
             // 
@@ -167,11 +162,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(621, 448);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(456, 322);
             this.ControlBox = false;
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.cbServerlist);
@@ -186,10 +177,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Login";
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,9 +195,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbServerlist;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

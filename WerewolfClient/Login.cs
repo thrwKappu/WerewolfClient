@@ -139,6 +139,7 @@ namespace WerewolfClient
         }
         private void TitleEvent(object sender, EventArgs e, Timer _timer)
         {
+            /*
             if (this.pictureBox3.Visible == true)
             {
                 this.pictureBox3.Visible = false;
@@ -153,6 +154,7 @@ namespace WerewolfClient
                 _timer.Dispose();
             }
                 
+             */
         }
     }
 }
