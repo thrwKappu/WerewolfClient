@@ -67,6 +67,8 @@
             // 
             // GBPlayers
             // 
+            this.GBPlayers.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GBPlayers.BackgroundImage")));
+            this.GBPlayers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.GBPlayers.Controls.Add(this.BtnPlayer15);
             this.GBPlayers.Controls.Add(this.BtnPlayer14);
             this.GBPlayers.Controls.Add(this.BtnPlayer13);
@@ -89,9 +91,13 @@
             this.GBPlayers.TabIndex = 0;
             this.GBPlayers.TabStop = false;
             this.GBPlayers.Text = "Players";
+            this.GBPlayers.Enter += new System.EventHandler(this.GBPlayers_Enter);
             // 
             // BtnPlayer15
             // 
+            this.BtnPlayer15.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BtnPlayer15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer15.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer15.Image")));
             this.BtnPlayer15.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer15.Location = new System.Drawing.Point(278, 282);
@@ -101,10 +107,12 @@
             this.BtnPlayer15.Tag = "15";
             this.BtnPlayer15.Text = "Player";
             this.BtnPlayer15.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer15.UseVisualStyleBackColor = true;
+            this.BtnPlayer15.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer14
             // 
+            this.BtnPlayer14.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer14.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer14.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer14.Image")));
             this.BtnPlayer14.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer14.Location = new System.Drawing.Point(190, 282);
@@ -114,10 +122,12 @@
             this.BtnPlayer14.Tag = "14";
             this.BtnPlayer14.Text = "Player";
             this.BtnPlayer14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer14.UseVisualStyleBackColor = true;
+            this.BtnPlayer14.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer13
             // 
+            this.BtnPlayer13.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer13.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer13.Image")));
             this.BtnPlayer13.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer13.Location = new System.Drawing.Point(102, 282);
@@ -127,10 +137,12 @@
             this.BtnPlayer13.Tag = "13";
             this.BtnPlayer13.Text = "Player";
             this.BtnPlayer13.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer13.UseVisualStyleBackColor = true;
+            this.BtnPlayer13.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer12
             // 
+            this.BtnPlayer12.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer12.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer12.Image")));
             this.BtnPlayer12.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer12.Location = new System.Drawing.Point(15, 282);
@@ -140,10 +152,12 @@
             this.BtnPlayer12.Tag = "12";
             this.BtnPlayer12.Text = "Player";
             this.BtnPlayer12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer12.UseVisualStyleBackColor = true;
+            this.BtnPlayer12.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer11
             // 
+            this.BtnPlayer11.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer11.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer11.Image")));
             this.BtnPlayer11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer11.Location = new System.Drawing.Point(278, 194);
@@ -153,10 +167,12 @@
             this.BtnPlayer11.Tag = "11";
             this.BtnPlayer11.Text = "Player";
             this.BtnPlayer11.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer11.UseVisualStyleBackColor = true;
+            this.BtnPlayer11.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer10
             // 
+            this.BtnPlayer10.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer10.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer10.Image")));
             this.BtnPlayer10.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer10.Location = new System.Drawing.Point(190, 194);
@@ -166,10 +182,12 @@
             this.BtnPlayer10.Tag = "10";
             this.BtnPlayer10.Text = "Player";
             this.BtnPlayer10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer10.UseVisualStyleBackColor = true;
+            this.BtnPlayer10.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer9
             // 
+            this.BtnPlayer9.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer9.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer9.Image")));
             this.BtnPlayer9.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer9.Location = new System.Drawing.Point(102, 194);
@@ -179,10 +197,12 @@
             this.BtnPlayer9.Tag = "9";
             this.BtnPlayer9.Text = "Player";
             this.BtnPlayer9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer9.UseVisualStyleBackColor = true;
+            this.BtnPlayer9.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer8
             // 
+            this.BtnPlayer8.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer8.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer8.Image")));
             this.BtnPlayer8.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer8.Location = new System.Drawing.Point(15, 194);
@@ -192,10 +212,12 @@
             this.BtnPlayer8.Tag = "8";
             this.BtnPlayer8.Text = "Player";
             this.BtnPlayer8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer8.UseVisualStyleBackColor = true;
+            this.BtnPlayer8.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer7
             // 
+            this.BtnPlayer7.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer7.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer7.Image")));
             this.BtnPlayer7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer7.Location = new System.Drawing.Point(278, 106);
@@ -205,10 +227,12 @@
             this.BtnPlayer7.Tag = "7";
             this.BtnPlayer7.Text = "Player";
             this.BtnPlayer7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer7.UseVisualStyleBackColor = true;
+            this.BtnPlayer7.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer6
             // 
+            this.BtnPlayer6.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer6.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer6.Image")));
             this.BtnPlayer6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer6.Location = new System.Drawing.Point(190, 106);
@@ -218,10 +242,12 @@
             this.BtnPlayer6.Tag = "6";
             this.BtnPlayer6.Text = "Player";
             this.BtnPlayer6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer6.UseVisualStyleBackColor = true;
+            this.BtnPlayer6.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer5
             // 
+            this.BtnPlayer5.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer5.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer5.Image")));
             this.BtnPlayer5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer5.Location = new System.Drawing.Point(102, 106);
@@ -231,10 +257,13 @@
             this.BtnPlayer5.Tag = "5";
             this.BtnPlayer5.Text = "Player";
             this.BtnPlayer5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer5.UseVisualStyleBackColor = true;
+            this.BtnPlayer5.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer4
             // 
+            this.BtnPlayer4.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BtnPlayer4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer4.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer4.Image")));
             this.BtnPlayer4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer4.Location = new System.Drawing.Point(15, 106);
@@ -244,10 +273,12 @@
             this.BtnPlayer4.Tag = "4";
             this.BtnPlayer4.Text = "Player";
             this.BtnPlayer4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer4.UseVisualStyleBackColor = true;
+            this.BtnPlayer4.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer3
             // 
+            this.BtnPlayer3.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer3.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer3.Image")));
             this.BtnPlayer3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer3.Location = new System.Drawing.Point(278, 19);
@@ -257,10 +288,12 @@
             this.BtnPlayer3.Tag = "3";
             this.BtnPlayer3.Text = "Player";
             this.BtnPlayer3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer3.UseVisualStyleBackColor = true;
+            this.BtnPlayer3.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer2
             // 
+            this.BtnPlayer2.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer2.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer2.Image")));
             this.BtnPlayer2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer2.Location = new System.Drawing.Point(190, 19);
@@ -270,10 +303,12 @@
             this.BtnPlayer2.Tag = "2";
             this.BtnPlayer2.Text = "Player";
             this.BtnPlayer2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer2.UseVisualStyleBackColor = true;
+            this.BtnPlayer2.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer1
             // 
+            this.BtnPlayer1.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer1.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer1.Image")));
             this.BtnPlayer1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer1.Location = new System.Drawing.Point(102, 19);
@@ -283,10 +318,14 @@
             this.BtnPlayer1.Tag = "1";
             this.BtnPlayer1.Text = "Player";
             this.BtnPlayer1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer1.UseVisualStyleBackColor = true;
+            this.BtnPlayer1.UseVisualStyleBackColor = false;
             // 
             // BtnPlayer0
             // 
+            this.BtnPlayer0.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPlayer0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BtnPlayer0.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BtnPlayer0.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.BtnPlayer0.Image = ((System.Drawing.Image)(resources.GetObject("BtnPlayer0.Image")));
             this.BtnPlayer0.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnPlayer0.Location = new System.Drawing.Point(15, 19);
@@ -296,10 +335,11 @@
             this.BtnPlayer0.Tag = "0";
             this.BtnPlayer0.Text = "Player";
             this.BtnPlayer0.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnPlayer0.UseVisualStyleBackColor = true;
+            this.BtnPlayer0.UseVisualStyleBackColor = false;
             // 
             // GBChat
             // 
+            this.GBChat.BackColor = System.Drawing.SystemColors.ControlDark;
             this.GBChat.Controls.Add(this.TbChatInput);
             this.GBChat.Controls.Add(this.TbChatBox);
             this.GBChat.Location = new System.Drawing.Point(413, 12);
@@ -327,6 +367,7 @@
             this.TbChatBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TbChatBox.Size = new System.Drawing.Size(354, 408);
             this.TbChatBox.TabIndex = 0;
+            this.TbChatBox.TextChanged += new System.EventHandler(this.TbChatBox_TextChanged);
             // 
             // GBAction
             // 
@@ -432,6 +473,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 508);
             this.Controls.Add(this.BtnJoin);
