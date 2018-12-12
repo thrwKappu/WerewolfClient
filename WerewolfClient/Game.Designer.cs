@@ -91,7 +91,7 @@
             this.GBPlayers.TabIndex = 0;
             this.GBPlayers.TabStop = false;
             this.GBPlayers.Text = "Players";
-            this.GBPlayers.Enter += new System.EventHandler(this.GBPlayers_Enter);
+            //this.GBPlayers.Enter += new System.EventHandler(this.GBPlayers_Enter);
             // 
             // BtnPlayer15
             // 
@@ -367,7 +367,7 @@
             this.TbChatBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TbChatBox.Size = new System.Drawing.Size(354, 408);
             this.TbChatBox.TabIndex = 0;
-            this.TbChatBox.TextChanged += new System.EventHandler(this.TbChatBox_TextChanged);
+            //this.TbChatBox.TextChanged += new System.EventHandler(this.TbChatBox_TextChanged);
             // 
             // GBAction
             // 
