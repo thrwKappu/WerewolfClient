@@ -14,7 +14,7 @@ Original readme below
  - [ ] [Modified Server](https://github.com/thrwKappu/WerewolfServer) -> Vanilla Client
  
 ## `server.json` Example
-*Note: Currently `Enabled` and `Legacy` fields won't doing anothing*
+*Note: Currently `Enabled` and `Legacy` fields won't doing anything*
 
 ```json
 [
