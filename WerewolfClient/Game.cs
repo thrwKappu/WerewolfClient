@@ -153,7 +153,7 @@ namespace WerewolfClient
         {
             if (m is WerewolfModel)
             {
-                var wm = (WerewolfModel)m;
+                WerewolfModel wm = (WerewolfModel)m;
                 switch (wm.Event)
                 {
                     case EventEnum.GameStopped:
@@ -161,6 +161,11 @@ namespace WerewolfClient
                         _updateTimer.Enabled = false;
                         break;
                     case EventEnum.GameStarted:
+                        AddChatMessage("Joined Game #" + wm.EventPayloads["Game.Id"]);
+                        _updateTimer.Interval = 1000;
+                        _updateTimer.Tick += new EventHandler(OnTimerEvent);
+                        _updateTimer.Enabled = true;
+
                         players = wm.Players;
                         _myRole = wm.EventPayloads["Player.Role.Name"];
                         AddChatMessage("Your role is " + _myRole + ".");
@@ -217,7 +222,7 @@ namespace WerewolfClient
                         AddChatMessage("Switch to night time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = WerewolfAPI.Model.Game.PeriodEnum.Night;
                         LBPeriod.Text = "Night time of";
-                        this.GBPlayers.BackgroundImage = this.groupBox1.BackgroundImage;
+                        
                         break;
                     case EventEnum.UpdateDay:
                         // TODO  catch parse exception here

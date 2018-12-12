@@ -217,6 +217,8 @@ namespace WerewolfClient
                                         _playerAction = action;
                                     }
                                 }
+
+                                _eventPayloads["Game.Id"] = _game.Id.ToString();
                             }
                             else
                             {
@@ -233,7 +235,7 @@ namespace WerewolfClient
                     {
                         foreach (Player player in _players)
                         {
-                            Player prevPlayer = _prevPlayers.Where(p => p.Id == player.Id).Single();
+                            Player prevPlayer = _prevPlayers.Where(p => p.Id == player.Id).Single<Player>();
                             if (player.Status == Player.StatusEnum.Shotdead && prevPlayer.Status != Player.StatusEnum.Shotdead)
                             {
                                 if (player.Id == Player.Id)
