@@ -44,7 +44,7 @@ namespace WerewolfClient
             _updateTimer = new Timer();
             _voteActivated = false;
             _actionActivated = false;
-            EnableButton(BtnJoin, true);
+            EnableButton(btnLeave, true);
             EnableButton(BtnAction, false);
             EnableButton(BtnVote, false);
             _myRole = null;
@@ -75,10 +75,28 @@ namespace WerewolfClient
 
         private void UpdateAvatar(WerewolfModel wm)
         {
+            //Hide all players
+            foreach (var plrBtn in Controls["GBPlayers"].Controls.OfType<Button>())
+            {
+                EnableButton(plrBtn, !(plrBtn.Name.StartsWith("BtnPlayer")));
+            }
+
             int i = 0;
             foreach (Player player in wm.Players)
             {
-                Controls["GBPlayers"].Controls["BtnPlayer" + i].Text = player.Name;
+                var _cpBtn = Controls["GBPlayers"].Controls["BtnPlayer" + i];
+
+                EnableButton((Button)_cpBtn, true);
+                _cpBtn.Text = player.Name;
+                _cpBtn.ForeColor = Color.Black;
+
+                //Custom for self
+                if (player.Name == wm.Player.Name)
+                {
+                    _cpBtn.Text += "\n(You)";
+                    _cpBtn.ForeColor = Color.DarkGreen;
+                }
+
                 if (player.Name == wm.Player.Name || player.Status != Player.StatusEnum.Alive)
                 {
                     // FIXME, need to optimize this
@@ -156,6 +174,13 @@ namespace WerewolfClient
                 WerewolfModel wm = (WerewolfModel)m;
                 switch (wm.Event)
                 {
+                    case WerewolfModel.EventEnum.CancelJoin:
+                        if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
+                        {
+                            this.Visible = false;
+                            _mainMenu.Visible = true;
+                        }
+                        break;
                     case EventEnum.GameStopped:
                         AddChatMessage("Game is finished, outcome is " + wm.EventPayloads["Game.Outcome"]);
                         _updateTimer.Enabled = false;
@@ -209,26 +234,25 @@ namespace WerewolfClient
                                 break;
                         }
                         EnableButton(BtnVote, true);
-                        EnableButton(BtnJoin, false);
                         UpdateAvatar(wm);
                         break;
                     case EventEnum.SwitchToDayTime:
                         AddChatMessage("Switch to day time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = WerewolfAPI.Model.Game.PeriodEnum.Day;
-                        LBPeriod.Text = "Day time of";
+                        LBPeriod.Text = "Day";
                         this.GBPlayers.BackgroundImage = _dayBG;
                         break;
                     case EventEnum.SwitchToNightTime:
                         AddChatMessage("Switch to night time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = WerewolfAPI.Model.Game.PeriodEnum.Night;
-                        LBPeriod.Text = "Night time of";
+                        LBPeriod.Text = "Night";
                         
                         break;
                     case EventEnum.UpdateDay:
                         // TODO  catch parse exception here
                         string tempDay = wm.EventPayloads["Game.Current.Day"];
                         _currentDay = int.Parse(tempDay);
-                        LBDay.Text = tempDay;
+                        LBDay.Text = "#"+tempDay;
                         break;
                     case EventEnum.UpdateTime:
                         string tempTime = wm.EventPayloads["Game.Current.Time"];
@@ -307,9 +331,13 @@ namespace WerewolfClient
             controller = (WerewolfController)c;
         }
 
-        private void BtnJoin_Click(object sender, EventArgs e)
+        private void btnLeave_Click(object sender, EventArgs e)
         {
-            
+            MessageBox.Show("Leave the game?", "Quit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, MessageBoxOptions.DefaultDesktopOnly);
+
+            WerewolfCommand wcmd = new WerewolfCommand();
+            wcmd.Action = WerewolfCommand.CommandEnum.CancelJoin;
+            controller.ActionPerformed(wcmd);
         }
 
         private void BtnVote_Click(object sender, EventArgs e)
@@ -396,10 +424,5 @@ namespace WerewolfClient
             }
         }
 
-        private void OnGameExit(object sender, FormClosingEventArgs e)
-        {
-            MessageBox.Show("Exit?");
-            Environment.Exit(0);
-        }
     }
 }
