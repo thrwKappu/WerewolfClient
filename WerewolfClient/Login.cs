@@ -31,12 +31,7 @@ namespace WerewolfClient
             _mainForm = MainForm;
 
             GenerateServerList();
-
-            Timer _scenedelay = new Timer();
-            _scenedelay.Interval = 1000;
-            _scenedelay.Tick += (sender, e) => TitleEvent(sender, e, _scenedelay);
-            _scenedelay.Start();
-            _scenedelay.Enabled = true;
+            
         }
 
         private void GenerateServerList()
@@ -56,7 +51,7 @@ namespace WerewolfClient
             }
             else
             {
-                Console.WriteLine("server.json not found, generating...");
+                Console.WriteLine("server.json not found..");
                 //TODO: Add server.json generator
             }
         }
@@ -130,31 +125,7 @@ namespace WerewolfClient
         private void btnExit_OnClicked(object sender, MouseEventArgs e)
         {
             MessageBox.Show("Exit?", "Exit?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            Application.Exit();
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void TitleEvent(object sender, EventArgs e, Timer _timer)
-        {
-            /*
-            if (this.pictureBox3.Visible == true)
-            {
-                this.pictureBox3.Visible = false;
-                this.pictureBox2.Visible = true;
-            }
-            else if (this.pictureBox2.Visible == true)
-            {
-                this.pictureBox2.Visible = false;
-                //this.pictureBox1.Visible = true;
-                _timer.Stop();
-                _timer.Enabled = false;
-                _timer.Dispose();
-            }
-                
-             */
+            Environment.Exit(0);
         }
     }
 }
