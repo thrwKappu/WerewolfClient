@@ -50,15 +50,14 @@
             this.TbChatInput = new System.Windows.Forms.TextBox();
             this.TbChatBox = new System.Windows.Forms.TextBox();
             this.GBAction = new System.Windows.Forms.GroupBox();
+            this.btnLeave = new System.Windows.Forms.Button();
             this.BtnAction = new System.Windows.Forms.Button();
             this.BtnVote = new System.Windows.Forms.Button();
-            this.BtnJoin = new System.Windows.Forms.Button();
             this.GBStatus = new System.Windows.Forms.GroupBox();
             this.LBTime = new System.Windows.Forms.Label();
             this.LBDay = new System.Windows.Forms.Label();
             this.LBPeriod = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.GBPlayers.SuspendLayout();
             this.GBChat.SuspendLayout();
             this.GBAction.SuspendLayout();
@@ -91,7 +90,6 @@
             this.GBPlayers.TabIndex = 0;
             this.GBPlayers.TabStop = false;
             this.GBPlayers.Text = "Players";
-            //this.GBPlayers.Enter += new System.EventHandler(this.GBPlayers_Enter);
             // 
             // BtnPlayer15
             // 
@@ -367,22 +365,32 @@
             this.TbChatBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TbChatBox.Size = new System.Drawing.Size(354, 408);
             this.TbChatBox.TabIndex = 0;
-            //this.TbChatBox.TextChanged += new System.EventHandler(this.TbChatBox_TextChanged);
             // 
             // GBAction
             // 
+            this.GBAction.Controls.Add(this.btnLeave);
             this.GBAction.Controls.Add(this.BtnAction);
             this.GBAction.Controls.Add(this.BtnVote);
             this.GBAction.Location = new System.Drawing.Point(12, 406);
             this.GBAction.Name = "GBAction";
-            this.GBAction.Size = new System.Drawing.Size(192, 82);
+            this.GBAction.Size = new System.Drawing.Size(267, 82);
             this.GBAction.TabIndex = 3;
             this.GBAction.TabStop = false;
             this.GBAction.Text = "Action";
             // 
+            // btnLeave
+            // 
+            this.btnLeave.Location = new System.Drawing.Point(178, 19);
+            this.btnLeave.Name = "btnLeave";
+            this.btnLeave.Size = new System.Drawing.Size(75, 46);
+            this.btnLeave.TabIndex = 9;
+            this.btnLeave.Text = "Quit";
+            this.btnLeave.UseVisualStyleBackColor = true;
+            this.btnLeave.Click += new System.EventHandler(this.btnLeave_Click);
+            // 
             // BtnAction
             // 
-            this.BtnAction.Location = new System.Drawing.Point(99, 19);
+            this.BtnAction.Location = new System.Drawing.Point(97, 19);
             this.BtnAction.Name = "BtnAction";
             this.BtnAction.Size = new System.Drawing.Size(75, 46);
             this.BtnAction.TabIndex = 1;
@@ -392,7 +400,7 @@
             // 
             // BtnVote
             // 
-            this.BtnVote.Location = new System.Drawing.Point(18, 19);
+            this.BtnVote.Location = new System.Drawing.Point(13, 19);
             this.BtnVote.Name = "BtnVote";
             this.BtnVote.Size = new System.Drawing.Size(75, 46);
             this.BtnVote.TabIndex = 0;
@@ -400,24 +408,13 @@
             this.BtnVote.UseVisualStyleBackColor = true;
             this.BtnVote.Click += new System.EventHandler(this.BtnVote_Click);
             // 
-            // BtnJoin
-            // 
-            this.BtnJoin.Location = new System.Drawing.Point(330, 425);
-            this.BtnJoin.Name = "BtnJoin";
-            this.BtnJoin.Size = new System.Drawing.Size(75, 46);
-            this.BtnJoin.TabIndex = 9;
-            this.BtnJoin.Text = "Quit";
-            this.BtnJoin.UseVisualStyleBackColor = true;
-            this.BtnJoin.Click += new System.EventHandler(this.BtnJoin_Click);
-            // 
             // GBStatus
             // 
             this.GBStatus.Controls.Add(this.LBTime);
             this.GBStatus.Controls.Add(this.LBDay);
             this.GBStatus.Controls.Add(this.LBPeriod);
             this.GBStatus.Controls.Add(this.label2);
-            this.GBStatus.Controls.Add(this.label1);
-            this.GBStatus.Location = new System.Drawing.Point(210, 406);
+            this.GBStatus.Location = new System.Drawing.Point(285, 406);
             this.GBStatus.Name = "GBStatus";
             this.GBStatus.Size = new System.Drawing.Size(114, 82);
             this.GBStatus.TabIndex = 8;
@@ -426,66 +423,58 @@
             // 
             // LBTime
             // 
-            this.LBTime.AutoSize = true;
-            this.LBTime.Location = new System.Drawing.Point(49, 52);
+            this.LBTime.Location = new System.Drawing.Point(82, 47);
             this.LBTime.Name = "LBTime";
             this.LBTime.Size = new System.Drawing.Size(13, 13);
             this.LBTime.TabIndex = 12;
             this.LBTime.Text = "0";
+            this.LBTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // LBDay
             // 
             this.LBDay.AutoSize = true;
-            this.LBDay.Location = new System.Drawing.Point(49, 36);
+            this.LBDay.Location = new System.Drawing.Point(82, 25);
             this.LBDay.Name = "LBDay";
             this.LBDay.Size = new System.Drawing.Size(13, 13);
             this.LBDay.TabIndex = 11;
             this.LBDay.Text = "0";
+            this.LBDay.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // LBPeriod
             // 
             this.LBPeriod.AutoSize = true;
-            this.LBPeriod.Location = new System.Drawing.Point(7, 19);
+            this.LBPeriod.Location = new System.Drawing.Point(13, 25);
             this.LBPeriod.Name = "LBPeriod";
             this.LBPeriod.Size = new System.Drawing.Size(44, 13);
             this.LBPeriod.TabIndex = 10;
             this.LBPeriod.Text = "Night of";
+            this.LBPeriod.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 52);
+            this.label2.Location = new System.Drawing.Point(27, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Time";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Day #";
-            // 
             // Game
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 508);
-            this.Controls.Add(this.BtnJoin);
+            this.ControlBox = false;
             this.Controls.Add(this.GBStatus);
             this.Controls.Add(this.GBAction);
             this.Controls.Add(this.GBChat);
             this.Controls.Add(this.GBPlayers);
-            this.MinimizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Game";
             this.Text = "Werewolf Client";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnGameExit);
             this.GBPlayers.ResumeLayout(false);
             this.GBChat.ResumeLayout(false);
             this.GBChat.PerformLayout();
@@ -520,13 +509,12 @@
         private System.Windows.Forms.TextBox TbChatBox;
         private System.Windows.Forms.GroupBox GBAction;
         private System.Windows.Forms.Button BtnVote;
-        private System.Windows.Forms.Button BtnJoin;
+        private System.Windows.Forms.Button btnLeave;
         private System.Windows.Forms.GroupBox GBStatus;
         private System.Windows.Forms.Label LBTime;
         private System.Windows.Forms.Label LBDay;
         private System.Windows.Forms.Label LBPeriod;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtnAction;
     }
 }
