@@ -29,7 +29,7 @@ namespace WerewolfClient
             mGameForm.SetMainMenu(mMainForm);
 
             //too lazy to figure better solution yet
-            mMainForm.setLoginForm(mLogin);
+            mMainForm.SetLoginForm(mLogin);
 
             WerewolfController mController =  WerewolfController.GetInstance();
             WerewolfModel mModel = new WerewolfModel();
