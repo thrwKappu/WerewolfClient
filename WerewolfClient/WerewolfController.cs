@@ -50,7 +50,7 @@ namespace WerewolfClient
                     switch (wcmd.Action)
                     {
                         case WerewolfCommand.CommandEnum.SignUp:
-                            wm.SignUp(cmd.Payloads["Server"], cmd.Payloads["Login"], cmd.Payloads["Password"]);
+                            wm.SignUp(cmd.Payloads["Server"], cmd.Payloads["Login"], cmd.Payloads["Password"], cmd.Payloads["Type"]);
                             break;
 
                         case WerewolfCommand.CommandEnum.SignIn:
