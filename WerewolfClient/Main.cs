@@ -25,9 +25,11 @@ namespace WerewolfClient
         {
             InitializeComponent();
             _gameForm = game;
+
+            _MMTimer = new Timer();
         }
 
-        public void setLoginForm(Form _lf)
+        public void SetLoginForm(Form _lf)
         {
             _loginForm = _lf;
         }
@@ -37,36 +39,37 @@ namespace WerewolfClient
             controller = (WerewolfController)c;
         }
 
-        private void btnMM_Click(object sender, EventArgs e)
+        private void BtnMM_Click(object sender, EventArgs e)
         {
-            _MMTimer = new Timer();
-
             if (!_isMM)
             {
-                WerewolfCommand wcmd = new WerewolfCommand();
-                wcmd.Action = WerewolfCommand.CommandEnum.JoinGame;
+                WerewolfCommand wcmd = new WerewolfCommand
+                {
+                    Action = WerewolfCommand.CommandEnum.JoinGame
+                };
                 controller.ActionPerformed(wcmd);
             }
             else
             {
-                WerewolfCommand wcmd = new WerewolfCommand();
-                wcmd.Action = WerewolfCommand.CommandEnum.CancelJoin;
+                WerewolfCommand wcmd = new WerewolfCommand
+                {
+                    Action = WerewolfCommand.CommandEnum.CancelJoin
+                };
                 controller.ActionPerformed(wcmd);
-
-                _isMM = false;
-                _MMTimer.Dispose();
             }
         }
 
-        private void btnLogoff_Click(object sender, EventArgs e)
+        private void BtnLogoff_Click(object sender, EventArgs e)
         {
             if (_isMM)
             {
-                btnMM_Click(sender, e);
+                BtnMM_Click(sender, e);
             }
 
-            WerewolfCommand wcmd = new WerewolfCommand();
-            wcmd.Action = WerewolfCommand.CommandEnum.SignOut;
+            WerewolfCommand wcmd = new WerewolfCommand
+            {
+                Action = WerewolfCommand.CommandEnum.SignOut
+            };
             controller.ActionPerformed(wcmd);
         }
 
@@ -77,21 +80,25 @@ namespace WerewolfClient
             {
                 tbUID.Text = wm.Player.Id.ToString();
                 tbUsername.Text = wm.Player.Name.ToString();
+
+                var _regisDate = wm.Player.Regisdate.ToString();
+                tbRegisDate.Text = _regisDate;
             }
         }
 
         private void OnTimerEvent(object sender, EventArgs e)
         {
-            WerewolfCommand wcmd = new WerewolfCommand();
-            wcmd.Action = WerewolfCommand.CommandEnum.RequestUpdate;
+            WerewolfCommand wcmd = new WerewolfCommand
+            {
+                Action = WerewolfCommand.CommandEnum.RequestUpdate
+            };
             controller.ActionPerformed(wcmd);
         }
 
         public void Notify(Model m)
         {
-            if (m is WerewolfModel)
+            if (m is WerewolfModel wm)
             {
-                WerewolfModel wm = (WerewolfModel)m;
                 switch (wm.Event)
                 {
                     case WerewolfModel.EventEnum.SignOut:
@@ -101,7 +108,7 @@ namespace WerewolfClient
                             this.Visible = false;
                         }
                         break;
-                    
+
                     case WerewolfModel.EventEnum.JoinGame:
                         if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
                         {
@@ -109,7 +116,7 @@ namespace WerewolfClient
                             _MMTimer.Tick += new EventHandler(OnTimerEvent);
                             _MMTimer.Enabled = true;
 
-                            btnMM.Text = "Joining Room #" + wm.EventPayloads["Game.Id"] + "\r\n(Queuing: " + wm.EventPayloads["Game.Count"] + "Players)";
+                            BtnMM.Text = "Cancel";
 
                             _isMM = true;
                         }
@@ -117,8 +124,12 @@ namespace WerewolfClient
                     case WerewolfModel.EventEnum.CancelJoin:
                         if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
                         {
-                            btnMM.Text = "Auto Matchmaking";
+                            BtnMM.Text = "Auto Matchmaking";
+
                             _isMM = false;
+
+                            _MMTimer.Enabled = false;
+                            _MMTimer.Dispose();
                         }
                         break;
                     case WerewolfModel.EventEnum.GameStarted:
@@ -135,12 +146,8 @@ namespace WerewolfClient
 
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
-            MessageBox.Show("Exit?");
-
             //Call logout event
-            btnLogoff_Click(sender, e);
-
-            Environment.Exit(0);
+            BtnLogoff_Click(sender, e);
         }
     }
 }
