@@ -398,6 +398,7 @@ namespace WerewolfClient
                 _game = null;
                 _player.Status = Player.StatusEnum.Notingame;
                 _eventPayloads["Success"] = TRUE;
+                _isPlaying = false;
             }
             NotifyAll();
         }
@@ -437,11 +438,12 @@ namespace WerewolfClient
                 InitilizeModel(server);
                 Player p = new Player(null, login, password, null, null, null, Player.StatusEnum.Notingame);
                 _player = _playerEP.LoginPlayer(p);
-                Console.WriteLine(_player.Session);
 
                 if (_player.Session.Equals(null))
                     throw new Exception();
 
+                Console.WriteLine(_player.Session);
+                
                 _event = EventEnum.SignIn;
                 _eventPayloads["Success"] = TRUE;
             }
@@ -450,9 +452,38 @@ namespace WerewolfClient
                 Console.WriteLine(ex.ToString());
                 _event = EventEnum.SignIn;
                 _eventPayloads["Success"] = FALSE;
-                _eventPayloads["Error"] = ex.ToString();
+                _eventPayloads["Error"] = ex.Message;
             }
             NotifyAll();
+        }
+
+        public void SignUp(string server, string username, string password, string type)
+        {
+            if (type.Equals("Legacy"))
+                SignUp(server, username, password);
+            else
+            {
+                try
+                {
+                    PlayerApi playerEP = new PlayerApi(server);
+                    Player p = new Player(null, username, password, null, null, null, Player.StatusEnum.Offline);
+                    p.Regisdate = ((new DateTime()).ToLocalTime()).ToUniversalTime().ToString();
+                    
+                    _player = playerEP.AddPlayer(p);
+
+                    Console.WriteLine(_player.Id);
+                    _event = EventEnum.SignUp;
+                    _eventPayloads["Success"] = TRUE;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    _event = EventEnum.SignUp;
+                    _eventPayloads["Success"] = FALSE;
+                    _eventPayloads["Error"] = ex.Message;
+                }
+                NotifyAll();
+            }
         }
         public void SignUp(string server, string login, string password)
         {
@@ -460,6 +491,7 @@ namespace WerewolfClient
             {
                 PlayerApi playerEP = new PlayerApi(server);
                 Player p = new Player(null, login, password, null, null, null, Player.StatusEnum.Offline);
+                
                 _player = playerEP.AddPlayer(p);
 
                 Console.WriteLine(_player.Id);
@@ -470,7 +502,7 @@ namespace WerewolfClient
                 Console.WriteLine(ex.ToString());
                 _event = EventEnum.SignUp;
                 _eventPayloads["Success"] = FALSE;
-                _eventPayloads["Error"] = ex.ToString();
+                _eventPayloads["Error"] = ex.Message;
             }
             NotifyAll();
         }
