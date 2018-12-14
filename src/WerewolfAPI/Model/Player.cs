@@ -179,6 +179,8 @@ namespace WerewolfAPI.Model
         [DataMember(Name="session", EmitDefaultValue=false)]
         public string Session { get; set; }
 
+        [DataMember(Name="regisdate", EmitDefaultValue = false)]
+        public string Regisdate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -195,6 +197,7 @@ namespace WerewolfAPI.Model
             sb.Append("  Role: ").Append(Role).Append("\n");
             sb.Append("  Session: ").Append(Session).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Regisdate: ").Append(Regisdate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

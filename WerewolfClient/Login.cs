@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,10 +18,10 @@ namespace WerewolfClient
         //For dealing with JSON
         protected class ServerInfo
         {
-            public string name { get; set; }
-            public string ip { get; set; }
-            public bool enabled { get; set; }
-            public bool legacy { get; set; }
+            public string Name { get; set; }
+            public string Ip { get; set; }
+            public bool Enabled { get; set; }
+            public bool Legacy { get; set; }
         }
 
         private WerewolfController controller;
@@ -42,12 +43,17 @@ namespace WerewolfClient
                 
                 foreach (var data in _svListJSON)
                 {
-                    cbServerlist.Items.Add(new { Text = data.name, Value = data.ip, Enabled = data.enabled });
+                    var _svt = data.Legacy == true ? "Legacy" : "";
+                    cbServerlist.Items.Add(new { Text = data.Name, Value = data.Ip, data.Enabled, Tag = _svt});
                 }
 
                 cbServerlist.DisplayMember = "Text";
                 cbServerlist.ValueMember = "Value";
+                
                 cbServerlist.SelectedIndex = 0;
+
+                pnUserAcc.Enabled = true;
+                pnUserAcc.Visible = true;
             }
             else
             {
@@ -58,9 +64,8 @@ namespace WerewolfClient
 
         public void Notify(Model m)
         {
-            if (m is WerewolfModel)
+            if (m is WerewolfModel wm)
             {
-                WerewolfModel wm = (WerewolfModel)m;
                 switch (wm.Event)
                 {
                     case WerewolfModel.EventEnum.SignIn:
@@ -74,7 +79,7 @@ namespace WerewolfClient
                         }
                         else
                         {
-                            MessageBox.Show("Login or password incorrect, please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show(wm.EventPayloads["Error"], "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         break;
                     case WerewolfModel.EventEnum.SignUp:
@@ -98,13 +103,17 @@ namespace WerewolfClient
 
         private void BtnSignIn_Click(object sender, EventArgs e)
         {
-            if (TbLogin.Text.Equals("") || TbPassword.Text.Equals(""))
-                MessageBox.Show("Please input username and/or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (TbLogin.Text.Equals("") || TbPassword.Text.Equals("")) {
+                string _missingType = (TbLogin.Text.Equals("") && TbPassword.Text.Equals("")) ? "and" : "or";
+                MessageBox.Show("Please input username " + _missingType + " password","Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             else
             {
-                WerewolfCommand wcmd = new WerewolfCommand();
-                wcmd.Action = WerewolfCommand.CommandEnum.SignIn;
-                wcmd.Payloads = new Dictionary<string, string>() { { "Login", TbLogin.Text }, { "Password", TbPassword.Text }, { "Server", (cbServerlist.SelectedItem as dynamic).Value } };
+                WerewolfCommand wcmd = new WerewolfCommand
+                {
+                    Action = WerewolfCommand.CommandEnum.SignIn,
+                    Payloads = new Dictionary<string, string>() { { "Login", TbLogin.Text }, { "Password", TbPassword.Text }, { "Server", (cbServerlist.SelectedItem as dynamic).Value } }
+                };
                 controller.ActionPerformed(wcmd);
             }
         }
@@ -112,20 +121,25 @@ namespace WerewolfClient
         private void BtnSignUp_Click(object sender, EventArgs e)
         {
             if (TbLogin.Text.Equals("") || TbPassword.Text.Equals(""))
-                MessageBox.Show("Please input username and/or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            {
+                string _missingType = (TbLogin.Text.Equals("") && TbPassword.Text.Equals("")) ? "and" : "or";
+                MessageBox.Show("Please input username " + _missingType + " password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             else
             {
-                WerewolfCommand wcmd = new WerewolfCommand();
-                wcmd.Action = WerewolfCommand.CommandEnum.SignUp;
-                wcmd.Payloads = new Dictionary<string, string>() { { "Login", TbLogin.Text }, { "Password", TbPassword.Text }, { "Server", (cbServerlist.SelectedItem as dynamic).Value } };
+                WerewolfCommand wcmd = new WerewolfCommand
+                {
+                    Action = WerewolfCommand.CommandEnum.SignUp,
+                    Payloads = new Dictionary<string, string>() { { "Login", TbLogin.Text }, { "Password", TbPassword.Text }, { "Server", (cbServerlist.SelectedItem as dynamic).Value }, { "Type",  (cbServerlist.SelectedItem as dynamic).Tag } }
+                };
                 controller.ActionPerformed(wcmd);
             }
         }
 
-        private void btnExit_OnClicked(object sender, MouseEventArgs e)
+        private void BtnExit_OnClicked(object sender, EventArgs e)
         {
             MessageBox.Show("Exit?", "Exit?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            Environment.Exit(0);
+            Application.Exit();
         }
     }
 }
