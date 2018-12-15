@@ -75,6 +75,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
+    <Compile Include="Intro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Intro.Designer.cs">
+      <DependentUpon>Intro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     <Compile Include="View.cs" />
     <Compile Include="WerewolfController.cs" />
     <Compile Include="WerewolfModel.cs" />
+    <EmbeddedResource Include="Intro.resx">
+      <DependentUpon>Intro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +143,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\wwbg.png" />
+    <None Include="Resources\wwhand.png" />
     <Content Include="WerewolfAPI.dll" />
     <None Include="Resources\Icon01.gif" />
     <None Include="Resources\Icon02.gif" />

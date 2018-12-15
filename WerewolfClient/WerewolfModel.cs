@@ -387,7 +387,7 @@ namespace WerewolfClient
         public void CancelJoin()
         {
             _event = EventEnum.CancelJoin;
-            if (_gameEP.GameSessionSessionIDGet(_player.Session).Id == null)
+            if (_gameEP == null || _gameEP.GameSessionSessionIDGet(_player.Session).Id == null)
             {
                 _eventPayloads["Success"] = FALSE;
                 _eventPayloads["Error"] = "Not in Matchmaking";
@@ -467,7 +467,7 @@ namespace WerewolfClient
                 {
                     PlayerApi playerEP = new PlayerApi(server);
                     Player p = new Player(null, username, password, null, null, null, Player.StatusEnum.Offline);
-                    p.Regisdate = ((new DateTime()).ToLocalTime()).ToUniversalTime().ToString();
+                    p.Regisdate = (DateTime.Now).ToUniversalTime().ToString();
                     
                     _player = playerEP.AddPlayer(p);
 

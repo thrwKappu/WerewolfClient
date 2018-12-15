@@ -55,6 +55,8 @@
             this.tbPlayedCount = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.BtnQuit = new System.Windows.Forms.Button();
+            this.tbMMStatus = new System.Windows.Forms.TextBox();
+            this.tbMMElapsed = new System.Windows.Forms.TextBox();
             this.gbPlayerinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
             this.gbPlayerConfig.SuspendLayout();
@@ -84,10 +86,10 @@
             this.pbAvatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbAvatar.Dock = System.Windows.Forms.DockStyle.Right;
             this.pbAvatar.InitialImage = global::WerewolfClient.Properties.Resources.Icon01;
-            this.pbAvatar.Location = new System.Drawing.Point(285, 16);
+            this.pbAvatar.Location = new System.Drawing.Point(247, 16);
             this.pbAvatar.Name = "pbAvatar";
-            this.pbAvatar.Size = new System.Drawing.Size(90, 181);
-            this.pbAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbAvatar.Size = new System.Drawing.Size(128, 181);
+            this.pbAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbAvatar.TabIndex = 6;
             this.pbAvatar.TabStop = false;
             // 
@@ -128,7 +130,7 @@
             this.tbRegisDate.Location = new System.Drawing.Point(100, 73);
             this.tbRegisDate.Name = "tbRegisDate";
             this.tbRegisDate.ReadOnly = true;
-            this.tbRegisDate.Size = new System.Drawing.Size(100, 13);
+            this.tbRegisDate.Size = new System.Drawing.Size(135, 13);
             this.tbRegisDate.TabIndex = 4;
             // 
             // tbUsername
@@ -138,7 +140,7 @@
             this.tbUsername.Location = new System.Drawing.Point(100, 47);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.ReadOnly = true;
-            this.tbUsername.Size = new System.Drawing.Size(100, 13);
+            this.tbUsername.Size = new System.Drawing.Size(135, 13);
             this.tbUsername.TabIndex = 4;
             // 
             // tbUID
@@ -148,7 +150,7 @@
             this.tbUID.Location = new System.Drawing.Point(100, 23);
             this.tbUID.Name = "tbUID";
             this.tbUID.ReadOnly = true;
-            this.tbUID.Size = new System.Drawing.Size(100, 13);
+            this.tbUID.Size = new System.Drawing.Size(135, 13);
             this.tbUID.TabIndex = 4;
             // 
             // label3
@@ -180,7 +182,7 @@
             // 
             // btnLogoff
             // 
-            this.btnLogoff.Location = new System.Drawing.Point(15, 240);
+            this.btnLogoff.Location = new System.Drawing.Point(12, 422);
             this.btnLogoff.Name = "btnLogoff";
             this.btnLogoff.Size = new System.Drawing.Size(112, 54);
             this.btnLogoff.TabIndex = 1;
@@ -190,6 +192,8 @@
             // 
             // gbGameMenu
             // 
+            this.gbGameMenu.Controls.Add(this.tbMMElapsed);
+            this.gbGameMenu.Controls.Add(this.tbMMStatus);
             this.gbGameMenu.Controls.Add(this.label8);
             this.gbGameMenu.Controls.Add(this.lbMMStatus);
             this.gbGameMenu.Controls.Add(this.label9);
@@ -327,13 +331,32 @@
             // 
             // BtnQuit
             // 
-            this.BtnQuit.Location = new System.Drawing.Point(141, 240);
+            this.BtnQuit.Location = new System.Drawing.Point(161, 422);
             this.BtnQuit.Name = "BtnQuit";
             this.BtnQuit.Size = new System.Drawing.Size(112, 54);
             this.BtnQuit.TabIndex = 1;
             this.BtnQuit.Text = "Quit";
             this.BtnQuit.UseVisualStyleBackColor = true;
             this.BtnQuit.Click += new System.EventHandler(this.BtnLogoff_Click);
+            // 
+            // tbMMStatus
+            // 
+            this.tbMMStatus.BackColor = System.Drawing.SystemColors.Control;
+            this.tbMMStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbMMStatus.Location = new System.Drawing.Point(126, 31);
+            this.tbMMStatus.Name = "tbMMStatus";
+            this.tbMMStatus.Size = new System.Drawing.Size(220, 13);
+            this.tbMMStatus.TabIndex = 5;
+            // 
+            // tbMMElapsed
+            // 
+            this.tbMMElapsed.BackColor = System.Drawing.SystemColors.Control;
+            this.tbMMElapsed.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbMMElapsed.Enabled = false;
+            this.tbMMElapsed.Location = new System.Drawing.Point(126, 69);
+            this.tbMMElapsed.Name = "tbMMElapsed";
+            this.tbMMElapsed.Size = new System.Drawing.Size(220, 13);
+            this.tbMMElapsed.TabIndex = 5;
             // 
             // Main
             // 
@@ -391,5 +414,7 @@
         private System.Windows.Forms.Button BtnQuit;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbMMElapsed;
+        private System.Windows.Forms.TextBox tbMMStatus;
     }
 }

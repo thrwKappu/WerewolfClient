@@ -28,6 +28,7 @@ namespace WerewolfClient
         private List<Player> players = null;
         private System.Drawing.Image _dayBG;
         private Form _mainMenu;
+        private int _myGID = 0;
 
         public Game()
         {
@@ -75,8 +76,11 @@ namespace WerewolfClient
             if (owner.Equals("[System]"))
                 TbChatBox.SelectionColor = Color.DarkGray;
 
-            DateTime _curTime = new DateTime();
-            TbChatBox.AppendText("[" + _curTime.ToLocalTime().ToShortTimeString() + "]" + str + Environment.NewLine);
+            if (Controls["GBPlayers"].Controls["BtnPlayer" + _myGID].Text.Contains(owner))
+                TbChatBox.SelectionColor = Color.DarkGreen;
+
+            DateTime _curTime = DateTime.Now;
+            TbChatBox.AppendText("[" + _curTime.ToLocalTime().ToShortTimeString() + "] " + str + Environment.NewLine);
             TbChatBox.SelectionColor = TbChatBox.ForeColor;
         }
 
@@ -87,12 +91,6 @@ namespace WerewolfClient
 
         private void UpdateAvatar(WerewolfModel wm)
         {
-            //Hide all players
-            foreach (var plrBtn in Controls["GBPlayers"].Controls.OfType<Button>())
-            {
-                EnableButton(plrBtn, !(plrBtn.Name.StartsWith("BtnPlayer")));
-            }
-
             int i = 0;
             foreach (Player player in wm.Players)
             {
@@ -117,6 +115,7 @@ namespace WerewolfClient
                     if (player.Name == wm.Player.Name)
                     {
                         role = _myRole;
+                        _myGID = i;
                     }
                     else if (player.Role != null)
                     {
@@ -197,6 +196,12 @@ namespace WerewolfClient
                         _updateTimer.Enabled = false;
                         break;
                     case EventEnum.GameStarted:
+                        //Hide all players
+                        foreach (var plrBtn in Controls["GBPlayers"].Controls.OfType<Button>())
+                        {
+                            EnableButton(plrBtn, !(plrBtn.Name.StartsWith("BtnPlayer")));
+                        }
+
                         AddChatMessage("Joined Game #" + wm.EventPayloads["Game.Id"]);
                         _updateTimer.Interval = 1000;
                         _updateTimer.Tick += new EventHandler(OnTimerEvent);
@@ -250,25 +255,24 @@ namespace WerewolfClient
                     case EventEnum.SwitchToDayTime:
                         AddChatMessage("Switch to day time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = WerewolfAPI.Model.Game.PeriodEnum.Day;
-                        LBPeriod.Text = "Day";
+                        
                         this.GBPlayers.BackgroundImage = _dayBG;
                         break;
                     case EventEnum.SwitchToNightTime:
                         AddChatMessage("Switch to night time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = WerewolfAPI.Model.Game.PeriodEnum.Night;
-                        LBPeriod.Text = "Night";
 
                         break;
                     case EventEnum.UpdateDay:
                         // TODO  catch parse exception here
                         string tempDay = wm.EventPayloads["Game.Current.Day"];
                         _currentDay = int.Parse(tempDay);
-                        LBDay.Text = "#" + tempDay + "/10";
+
                         break;
                     case EventEnum.UpdateTime:
                         string tempTime = wm.EventPayloads["Game.Current.Time"];
                         _currentTime = int.Parse(tempTime);
-                        LBTime.Text = tempTime + "/30";
+                        
                         UpdateAvatar(wm);
                         break;
                     case EventEnum.Vote:
@@ -332,6 +336,10 @@ namespace WerewolfClient
                         }
                         break;
                 }
+
+                LBPeriod.Text = (_currentPeriod == WerewolfAPI.Model.Game.PeriodEnum.Day) ? "Day" : (_currentPeriod == WerewolfAPI.Model.Game.PeriodEnum.Night) ? "Night" : "N/A";
+                LBDay.Text = "#" + _currentDay + "/10";
+                LBTime.Text = _currentTime + "/30";
                 // need to reset event
                 wm.Event = EventEnum.NOP;
             }

@@ -25,11 +25,15 @@ namespace WerewolfClient
 
             Login mLogin = new Login(mMainForm);
 
+            UserControl IntroForm = new ctrlIntro(mLogin);
+
             //Return to lobby
             mGameForm.SetMainMenu(mMainForm);
 
             //too lazy to figure better solution yet
             mMainForm.SetLoginForm(mLogin);
+
+
 
             WerewolfController mController =  WerewolfController.GetInstance();
             WerewolfModel mModel = new WerewolfModel();

@@ -434,49 +434,49 @@
             // 
             // LBTime
             // 
+            this.LBTime.AutoSize = true;
             this.LBTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.LBTime.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.LBTime.Location = new System.Drawing.Point(82, 47);
+            this.LBTime.Location = new System.Drawing.Point(63, 47);
             this.LBTime.Name = "LBTime";
-            this.LBTime.Size = new System.Drawing.Size(13, 13);
+            this.LBTime.Size = new System.Drawing.Size(34, 13);
             this.LBTime.TabIndex = 12;
-            this.LBTime.Text = "0";
-            this.LBTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.LBTime.Text = "0/30";
             // 
             // LBDay
             // 
             this.LBDay.AutoSize = true;
             this.LBDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.LBDay.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.LBDay.Location = new System.Drawing.Point(82, 25);
+            this.LBDay.Location = new System.Drawing.Point(62, 25);
             this.LBDay.Name = "LBDay";
-            this.LBDay.Size = new System.Drawing.Size(14, 13);
+            this.LBDay.Size = new System.Drawing.Size(42, 13);
             this.LBDay.TabIndex = 11;
-            this.LBDay.Text = "0";
-            this.LBDay.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.LBDay.Text = "#0/10";
             // 
             // LBPeriod
             // 
             this.LBPeriod.AutoSize = true;
             this.LBPeriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.LBPeriod.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.LBPeriod.Location = new System.Drawing.Point(13, 25);
+            this.LBPeriod.Location = new System.Drawing.Point(15, 25);
             this.LBPeriod.Name = "LBPeriod";
-            this.LBPeriod.Size = new System.Drawing.Size(52, 13);
+            this.LBPeriod.Size = new System.Drawing.Size(37, 13);
             this.LBPeriod.TabIndex = 10;
-            this.LBPeriod.Text = "Night of";
+            this.LBPeriod.Text = "Night";
             this.LBPeriod.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(27, 47);
+            this.label2.Location = new System.Drawing.Point(22, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Time";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // Game
             // 

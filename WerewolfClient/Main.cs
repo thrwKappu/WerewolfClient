@@ -19,6 +19,8 @@ namespace WerewolfClient
         private Timer _MMTimer;
 
         private bool _isMM = false;
+        private string _MMStatus = "Ready to Join";
+        private int _MMElapsed = 0;
         
 
         public Main(Form game)
@@ -81,8 +83,11 @@ namespace WerewolfClient
                 tbUID.Text = wm.Player.Id.ToString();
                 tbUsername.Text = wm.Player.Name.ToString();
 
-                var _regisDate = wm.Player.Regisdate.ToString();
-                tbRegisDate.Text = _regisDate;
+                if (wm.Player.Regisdate != null)
+                {
+                    var _regisDate = DateTime.Parse(wm.Player.Regisdate.ToString());
+                    tbRegisDate.Text = _regisDate.ToLocalTime().ToString();
+                }
             }
         }
 
@@ -93,6 +98,8 @@ namespace WerewolfClient
                 Action = WerewolfCommand.CommandEnum.RequestUpdate
             };
             controller.ActionPerformed(wcmd);
+
+            _MMElapsed++;
         }
 
         public void Notify(Model m)
@@ -112,6 +119,8 @@ namespace WerewolfClient
                     case WerewolfModel.EventEnum.JoinGame:
                         if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
                         {
+                            _MMElapsed = 0;
+
                             _MMTimer.Interval = 1000;
                             _MMTimer.Tick += new EventHandler(OnTimerEvent);
                             _MMTimer.Enabled = true;
@@ -119,28 +128,47 @@ namespace WerewolfClient
                             BtnMM.Text = "Cancel";
 
                             _isMM = true;
+
+
+                            _MMStatus = "Joining Game #" + wm.EventPayloads["Game.Id"] + " (" + wm.EventPayloads["Game.Count"] + "Players in queue)";
                         }
                         break;
                     case WerewolfModel.EventEnum.CancelJoin:
                         if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
                         {
                             BtnMM.Text = "Auto Matchmaking";
+                            BtnMM.Enabled = true;
 
                             _isMM = false;
 
                             _MMTimer.Enabled = false;
                             _MMTimer.Dispose();
+
+                            _MMStatus = "Ready to Join";
                         }
                         break;
                     case WerewolfModel.EventEnum.GameStarted:
+
+                        BtnMM.Enabled = false;
+                        BtnMM.Text = "Currently In-game";
+                        
                         _gameForm.Visible = true;
                         this.Visible = false;
+
+                        _MMStatus = "Playing ingame #" + wm.EventPayloads["Game.Id"] + " as " + wm.EventPayloads["Player.Role.Name"];
+
                         _isMM = false;
                         _MMTimer.Dispose();
+                        tbMMElapsed.Visible = false;
+
                         break;
+                   
                 }
 
                 ShowPlayerInfo(wm);
+
+                tbMMStatus.Text = _MMStatus;
+                tbMMElapsed.Text = _MMElapsed.ToString();
             }
         }
 
